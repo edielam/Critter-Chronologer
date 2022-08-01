@@ -1,10 +1,10 @@
 package com.udacity.critter.user;
 
-import com.udacity.critter.entities.Customer;
-import com.udacity.critter.entities.Employee;
-import com.udacity.critter.entities.Pet;
-import com.udacity.critter.services.CustomersService;
-import com.udacity.critter.services.EmployeesService;
+import com.udacity.critter.entity.Customer;
+import com.udacity.critter.entity.Employee;
+import com.udacity.critter.entity.Pet;
+import com.udacity.critter.service.CustomerService;
+import com.udacity.critter.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +24,10 @@ import java.util.stream.Collectors;
 public class UserController {
 
     @Autowired
-    private CustomersService customersService;
+    private CustomerService customerService;
 
     @Autowired
-    private EmployeesService employeesService;
+    private EmployeeService employeeService;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
@@ -36,18 +36,18 @@ public class UserController {
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
         customer.setNotes(customerDTO.getNotes());
         List<Long> petIds = customerDTO.getPetIds();
-        return getCustomerDTO(customersService.saveCustomer(customer, petIds));
+        return getCustomerDTO(customerService.saveCustomer(customer, petIds));
     }
 
     @GetMapping("/customer")
     public List<CustomerDTO> getAllCustomers() {
-        List<Customer> customers = customersService.getAllCustomers();
+        List<Customer> customers = customerService.getAllCustomers();
         return customers.stream().map(this::getCustomerDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/customer/pet/{petId}")
     public CustomerDTO getOwnerByPet(@PathVariable long petId) {
-        return getCustomerDTO(customersService.getCustomerByPetId(petId));
+        return getCustomerDTO(customerService.getCustomerByPetId(petId));
     }
 
     @PostMapping("/employee")
@@ -56,22 +56,22 @@ public class UserController {
         employee.setName(employeeDTO.getName());
         employee.setSkills(employeeDTO.getSkills());
         employee.setDaysAvailable(employeeDTO.getDaysAvailable());
-        return getEmployeeDTO(employeesService.saveEmployee(employee));
+        return getEmployeeDTO(employeeService.saveEmployee(employee));
     }
 
     @PostMapping("/employee/{employeeId}")
     public EmployeeDTO getEmployee(@PathVariable long employeeId) {
-        return getEmployeeDTO(employeesService.getEmployeeById(employeeId));
+        return getEmployeeDTO(employeeService.getEmployeeById(employeeId));
     }
 
     @PutMapping("/employee/{employeeId}")
     public void setAvailability(@RequestBody Set<DayOfWeek> daysAvailable, @PathVariable long employeeId) {
-        employeesService.setEmployeeAvailability(daysAvailable, employeeId);
+        employeeService.setEmployeeAvailability(daysAvailable, employeeId);
     }
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        List<Employee> employees = employeesService.getEmployeesForService(employeeDTO.getDate(), employeeDTO.getSkills());
+        List<Employee> employees = employeeService.getEmployeesForService(employeeDTO.getDate(), employeeDTO.getSkills());
         return employees.stream().map(this::getEmployeeDTO).collect(Collectors.toList());
     }
 
