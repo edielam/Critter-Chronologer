@@ -22,10 +22,10 @@ public class ScheduleController {
 
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
-        Schedule schedule = new Schedule();
-        schedule.setDate(scheduleDTO.getDate());
-        schedule.setActivities(scheduleDTO.getActivities());
-        return getScheduleDTO(schedulesService.saveSchedule(schedule, scheduleDTO.getEmployeeIds(), scheduleDTO.getPetIds()));
+        Schedule mySchedule = new Schedule();
+        mySchedule.setDate(scheduleDTO.getDate());
+        mySchedule.setActivities(scheduleDTO.getActivities());
+        return getScheduleDTO(schedulesService.saveSchedule(mySchedule, scheduleDTO.getEmployeeIds(), scheduleDTO.getPetIds()));
     }
 
     @GetMapping
