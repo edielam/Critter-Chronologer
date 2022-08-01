@@ -30,35 +30,35 @@ public class ScheduleController {
 
     @GetMapping
     public List<ScheduleDTO> getAllSchedules() {
-        List<Schedule> schedules = schedulesService.getAllSchedules();
-        return schedules.stream().map(this::getScheduleDTO).collect(Collectors.toList());
+        List<Schedule> scheduleList = schedulesService.getAllSchedules();
+        return scheduleList.stream().map(this::getScheduleDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
-        List<Schedule> schedules = schedulesService.getAllSchedulesForPet(petId);
-        return schedules.stream().map(this::getScheduleDTO).collect(Collectors.toList());
+        List<Schedule> scheduleList = schedulesService.getAllSchedulesForPet(petId);
+        return scheduleList.stream().map(this::getScheduleDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/employee/{employeeId}")
     public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) {
-        List<Schedule> schedules = schedulesService.getAllSchedulesForEmployee(employeeId);
-        return schedules.stream().map(this::getScheduleDTO).collect(Collectors.toList());
+        List<Schedule> scheduleList = schedulesService.getAllSchedulesForEmployee(employeeId);
+        return scheduleList.stream().map(this::getScheduleDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/customer/{customerId}")
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
-        List<Schedule> schedules = schedulesService.getAllSchedulesForCustomer(customerId);
-        return schedules.stream().map(this::getScheduleDTO).collect(Collectors.toList());
+        List<Schedule> scheduleList = schedulesService.getAllSchedulesForCustomer(customerId);
+        return scheduleList.stream().map(this::getScheduleDTO).collect(Collectors.toList());
     }
 
-    private ScheduleDTO getScheduleDTO(Schedule schedule) {
+    private ScheduleDTO getScheduleDTO(Schedule mySchedule) {
         ScheduleDTO scheduleDTO = new ScheduleDTO();
-        scheduleDTO.setId(schedule.getId());
-        scheduleDTO.setEmployeeIds(schedule.getEmployees().stream().map(Employee::getId).collect(Collectors.toList()));
-        scheduleDTO.setPetIds(schedule.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
-        scheduleDTO.setDate(schedule.getDate());
-        scheduleDTO.setActivities(schedule.getActivities());
+        scheduleDTO.setId(mySchedule.getId());
+        scheduleDTO.setEmployeeIds(mySchedule.getEmployees().stream().map(Employee::getId).collect(Collectors.toList()));
+        scheduleDTO.setPetIds(mySchedule.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
+        scheduleDTO.setDate(mySchedule.getDate());
+        scheduleDTO.setActivities(mySchedule.getActivities());
         return scheduleDTO;
     }
 }
