@@ -4,10 +4,10 @@ import com.udacity.critter.entity.Customer;
 import com.udacity.critter.entity.Employee;
 import com.udacity.critter.entity.Pet;
 import com.udacity.critter.entity.Schedule;
-import com.udacity.critter.repositories.CustomersRepository;
-import com.udacity.critter.repositories.EmployeesRepository;
-import com.udacity.critter.repositories.PetsRepository;
-import com.udacity.critter.repositories.SchedulesRepository;
+import com.udacity.critter.repository.CustomersRepository;
+import com.udacity.critter.repository.EmployeesRepository;
+import com.udacity.critter.repository.PetsRepository;
+import com.udacity.critter.repository.SchedulesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
