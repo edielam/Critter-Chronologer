@@ -31,12 +31,12 @@ public class UserController {
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
-        Customer customer = new Customer();
-        customer.setName(customerDTO.getName());
-        customer.setPhoneNumber(customerDTO.getPhoneNumber());
-        customer.setNotes(customerDTO.getNotes());
+        Customer myCustomer = new Customer();
+        myCustomer.setName(customerDTO.getName());
+        myCustomer.setPhoneNumber(customerDTO.getPhoneNumber());
+        myCustomer.setNotes(customerDTO.getNotes());
         List<Long> petIds = customerDTO.getPetIds();
-        return getCustomerDTO(customerService.saveCustomer(customer, petIds));
+        return getCustomerDTO(customerService.saveCustomer(myCustomer, petIds));
     }
 
     @GetMapping("/customer")
@@ -52,11 +52,11 @@ public class UserController {
 
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        Employee employee = new Employee();
-        employee.setName(employeeDTO.getName());
-        employee.setSkills(employeeDTO.getSkills());
-        employee.setDaysAvailable(employeeDTO.getDaysAvailable());
-        return getEmployeeDTO(employeeService.saveEmployee(employee));
+        Employee myEmployee = new Employee();
+        myEmployee.setName(employeeDTO.getName());
+        myEmployee.setSkills(employeeDTO.getSkills());
+        myEmployee.setDaysAvailable(employeeDTO.getDaysAvailable());
+        return getEmployeeDTO(employeeService.saveEmployee(myEmployee));
     }
 
     @PostMapping("/employee/{employeeId}")
