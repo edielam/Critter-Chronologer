@@ -24,11 +24,11 @@ public class CustomerService {
         return petsRepository.getOne(petId).getCustomer();
     }
     public Customer saveCustomer(Customer customer, List<Long> petIds) {
-        List<Pet> pets = new ArrayList<>();
+        List<Pet> petList = new ArrayList<>();
         if (petIds != null && !petIds.isEmpty()) {
-            pets = petIds.stream().map((petId) -> petsRepository.getOne(petId)).collect(Collectors.toList());
+            petList = petIds.stream().map((petId) -> petsRepository.getOne(petId)).collect(Collectors.toList());
         }
-        customer.setPets(pets);
+        customer.setPets(petList);
         return customersRepository.save(customer);
     }
 }

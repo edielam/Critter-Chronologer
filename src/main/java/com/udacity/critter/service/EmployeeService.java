@@ -14,29 +14,24 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
-
     @Autowired
     private EmployeesRepository employeesRepository;
-
     public Employee getEmployeeById(long employeeId) {
         return employeesRepository.getOne(employeeId);
     }
-
     public List<Employee> getEmployeesForService(LocalDate date, Set<EmployeeSkill> skills) {
-        List<Employee> employees = employeesRepository
+        List<Employee> employeeList = employeesRepository
                 .getAllByDaysAvailableContains(date.getDayOfWeek()).stream()
                 .filter(employee -> employee.getSkills().containsAll(skills))
                 .collect(Collectors.toList());
-        return employees;
+        return employeeList;
     }
-
     public Employee saveEmployee(Employee employee) {
         return employeesRepository.save(employee);
     }
-
     public void setEmployeeAvailability(Set<DayOfWeek> daysAvailable, long employeeId) {
-        Employee employee = employeesRepository.getOne(employeeId);
-        employee.setDaysAvailable(daysAvailable);
-        employeesRepository.save(employee);
+        Employee myEmployee = employeesRepository.getOne(employeeId);
+        myEmployee.setDaysAvailable(daysAvailable);
+        employeesRepository.save(myEmployee);
     }
 }

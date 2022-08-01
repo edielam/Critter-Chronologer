@@ -15,42 +15,36 @@ import java.util.List;
 
 @Service
 public class ScheduleService {
-
     @Autowired
     private SchedulesRepository schedulesRepository;
-
     @Autowired
     private PetsRepository petsRepository;
-
     @Autowired
     private EmployeesRepository employeesRepository;
-
     @Autowired
     private CustomersRepository customersRepository;
-
     public List<Schedule> getAllSchedules() {
         return schedulesRepository.findAll();
     }
-
     public List<Schedule> getAllSchedulesForPet(long petId) {
-        Pet pet = petsRepository.getOne(petId);
-        return schedulesRepository.getAllByPetsContains(pet);
+        Pet myPet = petsRepository.getOne(petId);
+        return schedulesRepository.getAllByPetsContains(myPet);
     }
 
     public List<Schedule> getAllSchedulesForEmployee(long employeeId) {
-        Employee employee = employeesRepository.getOne(employeeId);
-        return schedulesRepository.getAllByEmployeesContains(employee);
+        Employee myEmployee = employeesRepository.getOne(employeeId);
+        return schedulesRepository.getAllByEmployeesContains(myEmployee);
     }
 
     public List<Schedule> getAllSchedulesForCustomer(long customerId) {
-        Customer customer = customersRepository.getOne(customerId);
-        return  schedulesRepository.getAllByPetsIn(customer.getPets());
+        Customer myCustomer = customersRepository.getOne(customerId);
+        return  schedulesRepository.getAllByPetsIn(myCustomer.getPets());
     }
 
     public Schedule saveSchedule(Schedule schedule, List<Long> employeeIds, List<Long> petIds) {
-        List<Employee> employees = employeesRepository.findAllById(employeeIds);
+        List<Employee> employeeList = employeesRepository.findAllById(employeeIds);
         List<Pet> pets = petsRepository.findAllById(petIds);
-        schedule.setEmployees(employees);
+        schedule.setEmployees(employeeList);
         schedule.setPets(pets);
         return schedulesRepository.save(schedule);
     }

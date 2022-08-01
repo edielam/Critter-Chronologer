@@ -11,31 +11,25 @@ import java.util.List;
 
 @Service
 public class PetService {
-
     @Autowired
     private PetsRepository petsRepository;
-
     @Autowired
     private CustomersRepository customersRepository;
-
     public List<Pet> getAllPets() {
         return petsRepository.findAll();
     }
-
     public List<Pet> getPetsByCustomerId(long customerId) {
         return petsRepository.getAllByCustomerId(customerId);
     }
-
     public Pet getPetById(long petId) {
         return petsRepository.getOne(petId);
     }
-
     public Pet savePet(Pet pet, long ownerId) {
-        Customer customer = customersRepository.getOne(ownerId);
-        pet.setCustomer(customer);
+        Customer myCustomer = customersRepository.getOne(ownerId);
+        pet.setCustomer(myCustomer);
         pet = petsRepository.save(pet);
-        customer.insertPet(pet);
-        customersRepository.save(customer);
+        myCustomer.insertPet(pet);
+        customersRepository.save(myCustomer);
         return pet;
     }
 }
