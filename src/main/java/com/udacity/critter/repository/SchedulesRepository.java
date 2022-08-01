@@ -1,8 +1,8 @@
-package com.udacity.critter.repositories;
+package com.udacity.critter.repository;
 
-import com.udacity.critter.entities.Employee;
-import com.udacity.critter.entities.Pet;
-import com.udacity.critter.entities.Schedule;
+import com.udacity.critter.entity.Employee;
+import com.udacity.critter.entity.Pet;
+import com.udacity.critter.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.udacity.critter.service;
 
 import com.udacity.critter.entity.Employee;
-import com.udacity.critter.repositories.EmployeesRepository;
+import com.udacity.critter.repository.EmployeesRepository;
 import com.udacity.critter.user.EmployeeSkill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
