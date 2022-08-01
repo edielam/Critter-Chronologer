@@ -1,9 +1,9 @@
 package com.udacity.critter.service;
 
-import com.udacity.critter.entitiy.Customer;
-import com.udacity.critter.entitiy.Employee;
-import com.udacity.critter.entitiy.Pet;
-import com.udacity.critter.entitiy.Schedule;
+import com.udacity.critter.entity.Customer;
+import com.udacity.critter.entity.Employee;
+import com.udacity.critter.entity.Pet;
+import com.udacity.critter.entity.Schedule;
 import com.udacity.critter.repositories.CustomersRepository;
 import com.udacity.critter.repositories.EmployeesRepository;
 import com.udacity.critter.repositories.PetsRepository;

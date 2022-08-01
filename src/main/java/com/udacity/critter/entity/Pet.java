@@ -1,5 +1,6 @@
-package com.udacity.critter.entitiy;
+package com.udacity.critter.entity;
 
+import com.udacity.critter.entity.Customer;
 import com.udacity.critter.pet.PetType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
