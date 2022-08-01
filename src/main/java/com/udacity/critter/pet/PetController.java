@@ -20,12 +20,12 @@ public class PetController {
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
-        Pet pet = new Pet();
-        pet.setType(petDTO.getType());
-        pet.setName(petDTO.getName());
-        pet.setBirthDate(petDTO.getBirthDate());
-        pet.setNotes(petDTO.getNotes());
-        return getPetDTO(petService.savePet(pet, petDTO.getOwnerId()));
+        Pet myPet = new Pet();
+        myPet.setType(petDTO.getType());
+        myPet.setName(petDTO.getName());
+        myPet.setBirthDate(petDTO.getBirthDate());
+        myPet.setNotes(petDTO.getNotes());
+        return getPetDTO(petService.savePet(myPet, petDTO.getOwnerId()));
     }
 
     @GetMapping("/{petId}")
@@ -35,24 +35,24 @@ public class PetController {
 
     @GetMapping
     public List<PetDTO> getPets() {
-        List<Pet> pets = petService.getAllPets();
-        return pets.stream().map(this::getPetDTO).collect(Collectors.toList());
+        List<Pet> petList = petService.getAllPets();
+        return petList.stream().map(this::getPetDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
-        List<Pet> pets = petService.getPetsByCustomerId(ownerId);
-        return pets.stream().map(this::getPetDTO).collect(Collectors.toList());
+        List<Pet> petList = petService.getPetsByCustomerId(ownerId);
+        return petList.stream().map(this::getPetDTO).collect(Collectors.toList());
     }
 
-    private PetDTO getPetDTO(Pet pet) {
+    private PetDTO getPetDTO(Pet myPet) {
         PetDTO petDTO = new PetDTO();
-        petDTO.setId(pet.getId());
-        petDTO.setName(pet.getName());
-        petDTO.setType(pet.getType());
-        petDTO.setOwnerId(pet.getCustomer().getId());
-        petDTO.setBirthDate(pet.getBirthDate());
-        petDTO.setNotes(pet.getNotes());
+        petDTO.setId(myPet.getId());
+        petDTO.setName(myPet.getName());
+        petDTO.setType(myPet.getType());
+        petDTO.setOwnerId(myPet.getCustomer().getId());
+        petDTO.setBirthDate(myPet.getBirthDate());
+        petDTO.setNotes(myPet.getNotes());
         return petDTO;
     }
 }
