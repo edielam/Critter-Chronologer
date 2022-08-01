@@ -75,23 +75,23 @@ public class UserController {
         return employeeList.stream().map(this::getEmployeeDTO).collect(Collectors.toList());
     }
 
-    private CustomerDTO getCustomerDTO(Customer customer) {
+    private CustomerDTO getCustomerDTO(Customer myCustomer) {
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setId(customer.getId());
-        customerDTO.setName(customer.getName());
-        customerDTO.setPhoneNumber(customer.getPhoneNumber());
-        customerDTO.setNotes(customer.getNotes());
-        List<Long> petIds = customer.getPets().stream().map(Pet::getId).collect(Collectors.toList());
+        customerDTO.setId(myCustomer.getId());
+        customerDTO.setName(myCustomer.getName());
+        customerDTO.setPhoneNumber(myCustomer.getPhoneNumber());
+        customerDTO.setNotes(myCustomer.getNotes());
+        List<Long> petIds = myCustomer.getPets().stream().map(Pet::getId).collect(Collectors.toList());
         customerDTO.setPetIds(petIds);
         return customerDTO;
     }
 
-    private EmployeeDTO getEmployeeDTO(Employee employee) {
+    private EmployeeDTO getEmployeeDTO(Employee myEmployee) {
         EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setId(employee.getId());
-        employeeDTO.setName(employee.getName());
-        employeeDTO.setSkills(employee.getSkills());
-        employeeDTO.setDaysAvailable(employee.getDaysAvailable());
+        employeeDTO.setId(myEmployee.getId());
+        employeeDTO.setName(myEmployee.getName());
+        employeeDTO.setSkills(myEmployee.getSkills());
+        employeeDTO.setDaysAvailable(myEmployee.getDaysAvailable());
         return employeeDTO;
     }
 }
