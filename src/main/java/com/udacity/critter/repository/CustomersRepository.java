@@ -1,6 +1,6 @@
-package com.udacity.critter.repositories;
+package com.udacity.critter.repository;
 
-import com.udacity.critter.entities.Customer;
+import com.udacity.critter.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomersRepository extends JpaRepository<Customer, Long> {

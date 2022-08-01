@@ -1,6 +1,6 @@
-package com.udacity.critter.repositories;
+package com.udacity.critter.repository;
 
-import com.udacity.critter.entities.Employee;
+import com.udacity.critter.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.DayOfWeek;
