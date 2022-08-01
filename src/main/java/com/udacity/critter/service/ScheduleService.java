@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SchedulesService {
+public class ScheduleService {
 
     @Autowired
     private SchedulesRepository schedulesRepository;

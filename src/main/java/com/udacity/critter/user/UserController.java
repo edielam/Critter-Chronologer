@@ -41,8 +41,8 @@ public class UserController {
 
     @GetMapping("/customer")
     public List<CustomerDTO> getAllCustomers() {
-        List<Customer> customers = customerService.getAllCustomers();
-        return customers.stream().map(this::getCustomerDTO).collect(Collectors.toList());
+        List<Customer> customerList = customerService.getAllCustomers();
+        return customerList.stream().map(this::getCustomerDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/customer/pet/{petId}")
@@ -71,8 +71,8 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        List<Employee> employees = employeeService.getEmployeesForService(employeeDTO.getDate(), employeeDTO.getSkills());
-        return employees.stream().map(this::getEmployeeDTO).collect(Collectors.toList());
+        List<Employee> employeeList = employeeService.getEmployeesForService(employeeDTO.getDate(), employeeDTO.getSkills());
+        return employeeList.stream().map(this::getEmployeeDTO).collect(Collectors.toList());
     }
 
     private CustomerDTO getCustomerDTO(Customer customer) {

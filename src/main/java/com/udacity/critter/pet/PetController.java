@@ -1,7 +1,7 @@
 package com.udacity.critter.pet;
 
 import com.udacity.critter.entity.Pet;
-import com.udacity.critter.service.PetsService;
+import com.udacity.critter.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class PetController {
 
     @Autowired
-    PetsService petsService;
+    PetService petService;
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
@@ -25,23 +25,23 @@ public class PetController {
         pet.setName(petDTO.getName());
         pet.setBirthDate(petDTO.getBirthDate());
         pet.setNotes(petDTO.getNotes());
-        return getPetDTO(petsService.savePet(pet, petDTO.getOwnerId()));
+        return getPetDTO(petService.savePet(pet, petDTO.getOwnerId()));
     }
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
-        return getPetDTO(petsService.getPetById(petId));
+        return getPetDTO(petService.getPetById(petId));
     }
 
     @GetMapping
     public List<PetDTO> getPets() {
-        List<Pet> pets = petsService.getAllPets();
+        List<Pet> pets = petService.getAllPets();
         return pets.stream().map(this::getPetDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
-        List<Pet> pets = petsService.getPetsByCustomerId(ownerId);
+        List<Pet> pets = petService.getPetsByCustomerId(ownerId);
         return pets.stream().map(this::getPetDTO).collect(Collectors.toList());
     }
 

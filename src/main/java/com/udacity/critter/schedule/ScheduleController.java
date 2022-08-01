@@ -1,9 +1,9 @@
 package com.udacity.critter.schedule;
 
-import com.udacity.critter.entities.Employee;
-import com.udacity.critter.entities.Pet;
-import com.udacity.critter.entities.Schedule;
-import com.udacity.critter.services.SchedulesService;
+import com.udacity.critter.entity.Employee;
+import com.udacity.critter.entity.Pet;
+import com.udacity.critter.entity.Schedule;
+import com.udacity.critter.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class ScheduleController {
 
     @Autowired
-    private SchedulesService schedulesService;
+    private ScheduleService schedulesService;
 
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
