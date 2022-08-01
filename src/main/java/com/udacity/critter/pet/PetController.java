@@ -1,6 +1,6 @@
 package com.udacity.critter.pet;
 
-import com.udacity.critter.entities.Pet;
+import com.udacity.critter.entitiy.Pet;
 import com.udacity.critter.services.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

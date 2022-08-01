@@ -1,4 +1,4 @@
-package com.udacity.critter.entities;
+package com.udacity.critter.entitiy;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

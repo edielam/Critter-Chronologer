@@ -1,4 +1,4 @@
-package com.udacity.critter.services;
+package com.udacity.critter.service;
 
 import com.udacity.critter.entities.Customer;
 import com.udacity.critter.entities.Pet;
