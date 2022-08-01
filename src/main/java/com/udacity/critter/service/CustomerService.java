@@ -13,21 +13,16 @@ import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
-
     @Autowired
     private CustomersRepository customersRepository;
-
     @Autowired
     private PetsRepository petsRepository;
-
     public List<Customer> getAllCustomers() {
         return customersRepository.findAll();
     }
-
     public Customer getCustomerByPetId(long petId) {
         return petsRepository.getOne(petId).getCustomer();
     }
-
     public Customer saveCustomer(Customer customer, List<Long> petIds) {
         List<Pet> pets = new ArrayList<>();
         if (petIds != null && !petIds.isEmpty()) {

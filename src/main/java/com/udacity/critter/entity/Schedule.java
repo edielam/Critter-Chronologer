@@ -11,11 +11,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
-
-@Entity
 @Table
 @Data
 @NoArgsConstructor
+@Entity
 public class Schedule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

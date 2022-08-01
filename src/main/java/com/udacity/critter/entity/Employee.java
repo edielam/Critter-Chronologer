@@ -8,11 +8,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.Set;
-
-@Entity
 @Table
 @Data
 @NoArgsConstructor
+@Entity
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

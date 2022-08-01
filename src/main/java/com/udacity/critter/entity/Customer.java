@@ -6,11 +6,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
-@Entity
 @Table
 @Data
 @NoArgsConstructor
+@Entity
 public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
